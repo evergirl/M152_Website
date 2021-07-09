@@ -2,13 +2,14 @@
 <html lang="en">
 
 <head>
+  <link rel="icon" href="img/mainlogo.png">
     <!--
      - Roxy: Bootstrap template by GettTemplates.com
      - https://gettemplates.co/roxy
     -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Roxy by GetTemplates.co</title>
+    <title>Julia Merk</title>
     <meta name="description" content="Roxy">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -36,13 +37,11 @@
 	<a href="javascript:void(0)" id="side-nav-close">&times;</a>
 	
 	<div class="sidenav-content">
-		<p>
-			Kuncen WB1, Wirobrajan 10010, DIY
-		</p>
-		<p>
-			<span class="fs-16 primary-color">(+68) 120034509</span>
-		</p>
-		<p>info@yourdomain.com</p>
+		<div class="sidenav-content">
+			<p><strong>Impressum</strong></p>
+			<p>Anbieter:<br />Julia Merk<br />Zürich 8005<br />TBZ</p><br />
+			E-Mail: julia.merk@edu.tbz.ch</p>
+		</div>
 	</div>
 </div>	<div id="side-search" class="sidenav">
 	<a href="javascript:void(0)" id="side-search-close">&times;</a>
@@ -72,21 +71,26 @@
         <div class="collapse navbar-collapse" id="navbar-nav-header">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="cookies.html">Cookies</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="galery.html">Galerie</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cssanimation.html">CSS Animationen</a>
+                    <a class="nav-link" href="impressum.html">Impressum</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="blog.html">Blog</a>
+                    <a class="nav-link" href="learnings.html">Reflexion</a>
+                </li>                
+                <li class="nav-item">
+                    <a class="nav-link" href="songs.html">Songs</a>
+                </li>                
+                <li class="nav-item">
+                    <a class="nav-link" href="styleguide.html">Styleguide</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a id="side-search-open" class="nav-link" href="#">
-                        <span class="lnr lnr-magnifier"></span>
-                    </a>
+                    <a class="nav-link" href="videos.html">Videos</a>
                 </li>
                  <li class="nav-item only-desktop">
                     <a class="nav-link" id="side-nav-open" href="#">
@@ -102,13 +106,9 @@
 	<a href="javascript:void(0)" id="side-nav-close">&times;</a>
 	
 	<div class="sidenav-content">
-		<p>
-			Kuncen WB1, Wirobrajan 10010, DIY
-		</p>
-		<p>
-			<span class="fs-16 primary-color">(+68) 120034509</span>
-		</p>
-		<p>info@yourdomain.com</p>
+		<p><strong>Impressum</strong></p>
+        <p>Anbieter:<br />Julia Merk<br />Zürich 8005<br />TBZ</p><br />
+        E-Mail: julia.merk@edu.tbz.ch</p>
 	</div>
 </div><div id="side-search" class="sidenav">
 	<a href="javascript:void(0)" id="side-search-close">&times;</a>
@@ -127,15 +127,98 @@
 		</form>
 	</div>
 	
-</div>	<div class="jumbotron jumbotron-single d-flex align-items-center" style="background-image: url(img/copyright.jpg)">
+</div>	<div class="jumbotron jumbotron-single d-flex align-items-center" style="background-image: url(img/animation.jpg)">
   <div class="container text-center">
     <h1 class="display-2 mb-4">Animation</h1>
   </div>
 </div>	<section id="who-we-are" class="bg-white">
     <div class="container">
-        <div id="button"><a href="animation copy.html">Log In</a></div>
-		<div id="button"><a href="login.html">Log In</a></div>
-		<div id="button"><a href="login.html">Log In</a></div>        
+        <button onclick="showSvg()">SVG</button>
+		<button onclick="showGif()">GIF</button>		
+		<button onclick="showKeyframe()">KEYFRAME</button>    
+		<button onclick="showCanvas()">CANVAS</button>
+    <button onclick="showScroll()">SCROLL</button>
+		<object id ="animated-svg"data="img/Untitled.svg" style="display: none;"></object> 
+		<img id ="animated-gif" src="img/Animation.gif" style="display: none;"></img> 
+		<div id ="gifText" style="display: none;">Ich habe 8 Bilder welche ich früher mal für ein Projekt gezeichnet habe hintereinander 
+			abgespielt. Dies lässt es nun so aussehen als würde sich der Charakter bewegen.
+			Ein gif gibt und denn anschein für ein "bewegendes" Bild. Es sind eigentlich nur 
+			hitereinander gereihte bilder welche angezeigt werden.</div>
+		<img id ="animated-keyframe" class="element-animation" src="img/mainlogo.png" height="500" width="700" style="display: none;">
+		<canvas id="animated-canvas" style="display: none;" width="300" height="200" style="border:5px solid #5cbdea;"></canvas>
+    <script>
+      var c = document.getElementById("animated-canvas");
+      var ctx = c.getContext("2d");
+      ctx.font = "50px Arial";
+      ctx.fillText("Julia Merk", 10, 50);
+      </script>
+      <div id ="animated-scroll" style="display: none;" class="square-wrapper">
+        <div class="square square-transition"></div>
+      </div>
+      <script>
+        const square = document.querySelector('.square');
+        square.classList.remove('square-transition');
+        const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            square.classList.add('square-transition');
+            return;
+          }
+
+          square.classList.remove('square-transition');
+        });
+      });
+
+      observer.observe(document.querySelector('.square-wrapper'));
+    </script>
+    <script>
+    function showSvg() {
+            var x = document.getElementById("animated-svg");
+            if (x.style.display === "none") {
+              x.style.display = "block";
+            } else {
+              x.style.display = "none";
+            }
+          }
+		  function showGif() {
+            var x = document.getElementById("animated-gif");
+            if (x.style.display === "none") {
+              x.style.display = "block";
+            } else {
+              x.style.display = "none";
+            }
+			var x = document.getElementById("gifText");
+            if (x.style.display === "none") {
+              x.style.display = "block";
+            } else {
+              x.style.display = "none";
+            }
+          }
+		  function showKeyframe() {
+            var x = document.getElementById("animated-keyframe");
+            if (x.style.display === "none") {
+              x.style.display = "block";
+            } else {
+              x.style.display = "none";
+            }
+          }
+      function showCanvas() {
+            var x = document.getElementById("animated-canvas");
+            if (x.style.display === "none") {
+              x.style.display = "block";
+            } else {
+              x.style.display = "none";
+            }
+          }
+      function showScroll() {
+            var x = document.getElementById("animated-scroll");
+            if (x.style.display === "none") {
+              x.style.display = "block";
+            } else {
+              x.style.display = "none";
+            }
+          }
+		</script>
     </div>
 </section>
 <!-- End of Features Section--></div>
